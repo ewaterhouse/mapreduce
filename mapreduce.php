@@ -12,7 +12,7 @@ class MapReduce {
         return $result;
     }
 
-    public static function map($func, $arry) {
+    public static function map($arry, $func) {
         $result = array();
         foreach ($arry as $item) {
             array_push($result, $func($item));
@@ -20,10 +20,10 @@ class MapReduce {
         return $result;
     }
 
-    public static function reduce($arry, $func) {
-        $result = 0;
+    public static function reduce($arry, $func, $identity) {
+        $result = $identity;
         foreach ($arry as $item) {
-            $result += $func($item);
+            $result = $func($item, $result);
         }
         return $result;
     }
