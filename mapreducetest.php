@@ -30,11 +30,21 @@ class MapReduceTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testGeneric() {
-        $this->runner(['MapReduce', 'filter'], [[1,2,3,4,5], function($i) { return $i>3;}], [4,5]);
-        $this->runner(['MapReduce', 'map'],    [[1,2,3,4,5], function($i) { return $i*2;}], [2,4,6,8,10]);
-        $this->runner(['MapReduce', 'reduce'], [[1,2,3,4,5], function($i, $acc) { return $i+$acc;}, 0], 15);
-        $this->runner(['MapReduce', 'filter'], [['A', 'F'], function($i) { return $i>'C';}], ['F']);
-        $this->runner(['MapReduce', 'reduce'], [[1,2,3,4,5], function($i, $acc) { return $i*$acc;}, 1], 120);
+        $this->runner(['MapReduce', 'filter'], 
+            [[1,2,3,4,5], function($i) { return $i>3;}], 
+            [4,5]);
+        $this->runner(['MapReduce', 'map'],
+            [[1,2,3,4,5], function($i) { return $i*2;}], 
+            [2,4,6,8,10]);
+        $this->runner(['MapReduce', 'reduce'], 
+            [[1,2,3,4,5], function($i, $acc) { return $i+$acc;}, 0], 
+            15);
+        $this->runner(['MapReduce', 'filter'], 
+            [['A', 'F'], function($i) { return $i>'C';}], 
+            ['F']);
+        $this->runner(['MapReduce', 'reduce'], 
+            [[1,2,3,4,5], function($i, $acc) { return $i*$acc;}, 1], 
+            120);
     }
 
 }
