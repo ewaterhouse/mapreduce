@@ -1,6 +1,8 @@
 {
     "name": "ewaterhouse/mapreduce",
     "require": {
-        "zendframework/zendframework1": "^1.12"
+        "zendframework/zendframework1": "^1.12",
+        "guzzlehttp/guzzle": "^6.5",
+        "psr/log": "^1.1"
     }
 }
